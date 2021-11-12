@@ -1,0 +1,32 @@
+body {
+  background-color: #5b5548;
+}
+
+.center-emoji {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.emoji {
+  background-color: transparent;
+  border: none;
+  font-size: 7rem;
+  cursor: pointer;
+  transform: scale(1);
+  transition: 0.5s;
+}
+
+h1 {
+  color: white;
+  font-family: 'Pacifico', sans-serif;
+  font-weight: 400;
+}
+
+.emoji:hover {
+  transform: scale(1.1);
+}
