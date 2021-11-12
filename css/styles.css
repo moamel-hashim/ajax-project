@@ -40,3 +40,16 @@ h1 {
   border-left: 0;
   border-width: 1px;
 }
+
+.justify-align-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.height {
+  height: 100vh;
+}
+
+p {
+  color: #eee;
+}
