@@ -17,16 +17,26 @@ body {
   border: none;
   font-size: 7rem;
   cursor: pointer;
+  user-select: none;
   transform: scale(1);
   transition: 0.5s;
 }
 
 h1 {
-  color: white;
+  color: #e5e5e5;
   font-family: 'Pacifico', sans-serif;
   font-weight: 400;
 }
 
 .emoji:hover {
   transform: scale(1.1);
+}
+
+.under-line {
+  border-bottom: #eee;
+  border-style: solid;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-width: 1px;
 }
