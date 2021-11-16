@@ -1,0 +1,62 @@
+body {
+  background-color: #5b5548;
+}
+
+.center-emoji {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.emoji {
+  background-color: transparent;
+  border: none;
+  font-size: 7rem;
+  cursor: pointer;
+  user-select: none;
+  transform: scale(1);
+  transition: 0.5s;
+}
+
+h1 {
+  color: #e5e5e5;
+  font-family: 'Pacifico', sans-serif;
+  font-weight: 400;
+}
+
+.emoji:hover {
+  transform: scale(1.1);
+}
+
+.under-line {
+  border-bottom: #eee;
+  border-style: solid;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-width: 1px;
+}
+
+.justify-align-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.height {
+  height: 100vh;
+}
+
+p {
+  color: #eee;
+  font-size: 400;
+  font-family: 'Roboto', sans-serif;
+}
+
+.justify-content-align {
+  justify-content: space-around;
+  align-items: center;
+}
