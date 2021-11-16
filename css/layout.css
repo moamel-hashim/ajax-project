@@ -45,16 +45,6 @@
 }
 
 @media screen and (min-width: 769px) {
-  .fa-chevron-right {
-    position: relative;
-    left: 2rem;
-  }
-
-  .fa-chevron-left {
-    position: relative;
-    right: 2rem;
-  }
-
   .column-full {
     width: 100%;
   }

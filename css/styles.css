@@ -60,10 +60,3 @@ p {
   justify-content: space-around;
   align-items: center;
 }
-
-.fa-chevron-right,
-.fa-chevron-left {
-  font-size: xx-large;
-  color: white;
-  cursor: pointer;
-}
