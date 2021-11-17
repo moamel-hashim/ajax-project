@@ -14,15 +14,21 @@ function emojiHandler(event) {
   xhr.addEventListener('load', function () {
     var $p = document.querySelector('p');
     $p.textContent = xhr.response.joke;
+    $leftArrow.className = 'fas fa-chevron-left';
     $rightArrow.className = 'fas fa-chevron-right';
   });
   xhr.send();
 }
 
+var dadJokesArray = [];
+var count = 0;
+var $leftArrow = document.querySelector('.fa-chevron-left');
 var $rightArrow = document.querySelector('.fa-chevron-right');
 $rightArrow.addEventListener('click', rightArrowEventHandler);
+// $leftArrow.addEventListener('click', leftArrowEventHandler);
 
-function rightArrowEventHandler() {
+function rightArrowEventHandler(event) {
+  count++;
   const xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://icanhazdadjoke.com/');
   xhr.responseType = 'json';
@@ -30,6 +36,15 @@ function rightArrowEventHandler() {
   xhr.addEventListener('load', function () {
     var $p = document.querySelector('p');
     $p.textContent = xhr.response.joke;
+    // var dadJokes = xhr.response.joke;
+    // dadJokesArray.push(dadJokes);
+    xhr.send();
   });
-  xhr.send();
 }
+
+// function leftArrowEventHandler(event) {
+//   for (var i = 0; i < dadJokesArray.length; i++) {
+//     // count--;
+
+//   }
+// }
