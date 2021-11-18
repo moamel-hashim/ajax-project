@@ -14,8 +14,8 @@ function emojiHandler(event) {
   xhr.addEventListener('load', function () {
     var $p = document.querySelector('p');
     $p.textContent = xhr.response.joke;
-    $leftArrow.className = 'fas fa-chevron-left';
-    $rightArrow.className = 'fas fa-chevron-right';
+    var $jokeContainer = document.querySelector('.joke-container');
+    $jokeContainer.classList.remove('hidden');
     dadJokesArray.push(xhr.response.joke);
   });
   xhr.send();
