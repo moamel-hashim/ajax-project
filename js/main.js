@@ -17,6 +17,7 @@ function emojiHandler(event) {
     var $jokeContainer = document.querySelector('.joke-container');
     $jokeContainer.classList.remove('hidden');
     dadJokesArray.push(xhr.response.joke);
+    $smilingEmoji.classList.remove('hidden');
   });
   xhr.send();
 }
