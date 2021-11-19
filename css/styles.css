@@ -43,11 +43,11 @@ h1 {
 
 .justify-align-center {
   justify-content: center;
-  align-items: center;
+  align-items: end;
 }
 
 .height {
-  height: 100vh;
+  height: 40vh;
 }
 
 p {
@@ -90,4 +90,8 @@ p {
 .laughing-emoji-position {
   position: absolute;
   right: 0.8rem;
+}
+
+.justify-content-center {
+  justify-content: center;
 }

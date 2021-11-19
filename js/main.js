@@ -55,3 +55,16 @@ function leftArrowEventHandler(event) {
     $p.textContent = dadJokesArray[dadJokesIndex];
   }
 }
+
+var showOrHideLaughingEmoji = true;
+var $smilingEmoji = document.querySelector('.smiling');
+$smilingEmoji.addEventListener('click', smilingEmojiEventHandler);
+
+function smilingEmojiEventHandler(event) {
+  if (showOrHideLaughingEmoji === true) {
+    $smilingEmoji.className = 'favorite-emoji smiling hidden';
+    var laughingEmoji = document.querySelector('.laughing');
+    laughingEmoji.classList.remove('hidden');
+    showOrHideLaughingEmoji = false;
+  }
+}
