@@ -57,12 +57,14 @@ function leftArrowEventHandler(event) {
   }
 }
 
+var favoriteDadJokeArray = [];
 var showOrHideLaughingEmoji = true;
 var $smilingEmoji = document.querySelector('.smiling');
 $smilingEmoji.addEventListener('click', smilingEmojiEventHandler);
 
 function smilingEmojiEventHandler(event) {
   if (showOrHideLaughingEmoji === true) {
+    favoriteDadJokeArray.push(dadJokesArray[dadJokesIndex]);
     $smilingEmoji.textContent = '😂';
     showOrHideLaughingEmoji = false;
   } else {
