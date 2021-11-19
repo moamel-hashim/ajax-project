@@ -63,9 +63,10 @@ $smilingEmoji.addEventListener('click', smilingEmojiEventHandler);
 
 function smilingEmojiEventHandler(event) {
   if (showOrHideLaughingEmoji === true) {
-    $smilingEmoji.className = 'favorite-emoji smiling hidden';
-    var laughingEmoji = document.querySelector('.laughing');
-    laughingEmoji.classList.remove('hidden');
+    $smilingEmoji.textContent = '😂';
     showOrHideLaughingEmoji = false;
+  } else {
+    $smilingEmoji.textContent = '😁';
+    showOrHideLaughingEmoji = true;
   }
 }
