@@ -45,12 +45,12 @@
 }
 
 @media screen and (min-width: 769px) {
-  .fa-chevron-right {
+  .arrow-right {
     position: relative;
     left: 2rem;
   }
 
-  .fa-chevron-left {
+  .arrow-left {
     position: relative;
     right: 2rem;
   }
