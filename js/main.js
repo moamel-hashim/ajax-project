@@ -7,6 +7,8 @@ function emojiHandler(event) {
   $logoRow.className = 'hidden';
   var $header = document.querySelector('.under-line');
   $header.className = 'under-line view';
+  var $favoriteMenu = document.querySelector('.favorite-menu');
+  $favoriteMenu.className = 'favorite-menu';
   const xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://icanhazdadjoke.com/');
   xhr.responseType = 'json';
