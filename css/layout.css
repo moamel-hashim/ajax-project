@@ -23,7 +23,7 @@
 
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 900px;
+    max-width: inherit;
   }
 
   .column-full,
@@ -57,5 +57,29 @@
 
   .column-full {
     width: 100%;
+  }
+
+  .hamburger-menu {
+    width: 3%;
+    height: 4.3vh;
+  }
+
+  .bars {
+    margin-top: 6px;
+  }
+}
+
+.align-center {
+  align-items: center;
+}
+
+@media screen and (max-width: 667px) {
+  .hamburger-menu {
+    width: 20%;
+    height: 7vh;
+  }
+
+  .bars {
+    margin-top: 10px;
   }
 }
