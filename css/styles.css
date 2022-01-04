@@ -43,11 +43,11 @@ h1 {
 
 .justify-align-center {
   justify-content: center;
-  align-items: center;
+  align-items: end;
 }
 
 .height {
-  height: 100vh;
+  height: 40vh;
 }
 
 p {
@@ -59,4 +59,39 @@ p {
 .justify-content-align {
   justify-content: space-around;
   align-items: center;
+}
+
+.arrow-left,
+.arrow-right {
+  font-size: xx-large;
+  color: white;
+  cursor: pointer;
+}
+
+.favorite-emoji {
+  background-color: transparent;
+  border: none;
+  font-size: 4rem;
+  cursor: pointer;
+  user-select: none;
+  transform: scale(1);
+  transition: 0.5s;
+}
+
+.favorite-emoji:hover {
+  transform: scale(1.1);
+}
+
+.favorite-emoji-position {
+  position: absolute;
+  bottom: 0;
+}
+
+.laughing-emoji-position {
+  position: absolute;
+  right: 0.8rem;
+}
+
+.justify-content-center {
+  justify-content: center;
 }

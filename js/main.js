@@ -14,9 +14,11 @@ function emojiHandler(event) {
   xhr.addEventListener('load', function () {
     var $p = document.querySelector('p');
     $p.textContent = xhr.response.joke;
-    $leftArrow.className = 'fas fa-chevron-left';
-    $rightArrow.className = 'fas fa-chevron-right';
+    var $jokeContainer = document.querySelector('.joke-container');
+    $jokeContainer.classList.remove('hidden');
     dadJokesArray.push(xhr.response.joke);
+    $smilingEmoji.classList.remove('hidden');
+
   });
   xhr.send();
 }
@@ -45,7 +47,11 @@ function rightArrowEventHandler(event) {
     var $p = document.querySelector('p');
     $p.textContent = dadJokesArray[dadJokesIndex];
   }
-
+  if (favoriteDadJokeArray.indexOf(dadJokesArray[dadJokesIndex]) !== -1) {
+    $smilingEmoji.textContent = '😂';
+  } else {
+    $smilingEmoji.textContent = '😁';
+  }
 }
 
 function leftArrowEventHandler(event) {
@@ -53,5 +59,25 @@ function leftArrowEventHandler(event) {
     dadJokesIndex--;
     var $p = document.querySelector('p');
     $p.textContent = dadJokesArray[dadJokesIndex];
+  }
+  if (favoriteDadJokeArray.indexOf(dadJokesArray[dadJokesIndex]) !== -1) {
+    $smilingEmoji.textContent = '😂';
+  } else {
+    $smilingEmoji.textContent = '😁';
+  }
+}
+
+var favoriteDadJokeArray = [];
+var $smilingEmoji = document.querySelector('.smiling');
+$smilingEmoji.addEventListener('click', smilingEmojiEventHandler);
+
+function smilingEmojiEventHandler(event) {
+  if ($smilingEmoji.textContent === '😁') {
+    favoriteDadJokeArray.push(dadJokesArray[dadJokesIndex]);
+    $smilingEmoji.textContent = '😂';
+  } else {
+    var exFavDadJokeIndex = favoriteDadJokeArray.indexOf(dadJokesArray[dadJokesIndex]);
+    favoriteDadJokeArray.splice(exFavDadJokeIndex, 1);
+    $smilingEmoji.textContent = '😁';
   }
 }

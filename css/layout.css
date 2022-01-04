@@ -45,6 +45,16 @@
 }
 
 @media screen and (min-width: 769px) {
+  .arrow-right {
+    position: relative;
+    left: 2rem;
+  }
+
+  .arrow-left {
+    position: relative;
+    right: 2rem;
+  }
+
   .column-full {
     width: 100%;
   }
