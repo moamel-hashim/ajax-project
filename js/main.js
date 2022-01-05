@@ -7,8 +7,6 @@ function emojiHandler(event) {
   $logoRow.className = 'hidden';
   var $header = document.querySelector('.under-line');
   $header.className = 'under-line view';
-  var $favoriteMenu = document.querySelector('.favorite-menu');
-  $favoriteMenu.className = 'favorite-menu';
   const xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://icanhazdadjoke.com/');
   xhr.responseType = 'json';
@@ -81,5 +79,19 @@ function smilingEmojiEventHandler(event) {
     var exFavDadJokeIndex = favoriteDadJokeArray.indexOf(dadJokesArray[dadJokesIndex]);
     favoriteDadJokeArray.splice(exFavDadJokeIndex, 1);
     $smilingEmoji.textContent = '😁';
+  }
+}
+
+var onOrOff = true;
+var $favoriteMenu = document.querySelector('.favorite-menu');
+var $hamburger = document.querySelector('hamburger');
+$hamburger.addEventListener('click', favoriteHandler);
+function favoriteHandler(event) {
+  if (onOrOff === true) {
+    $favoriteMenu.className = 'favorite-menu';
+    onOrOff = false;
+  } else if (onOrOff === false) {
+    $favoriteMenu.className = 'favorite-menu hidden';
+    onOrOff = true;
   }
 }

@@ -115,3 +115,18 @@ p {
 .bars {
   color: rgb(173, 170, 164);
 }
+
+.favorite-menu {
+  border: 1px solid white;
+  border-right: none;
+  position: absolute;
+  right: 5px;
+  width: fit-content;
+}
+
+.favorite-menu > h3 {
+  text-transform: capitalize;
+  color: whitesmoke;
+  padding-left: 10px;
+  font-family: 'roboto', sans-serif;
+}
