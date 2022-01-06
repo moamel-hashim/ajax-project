@@ -84,14 +84,49 @@ function smilingEmojiEventHandler(event) {
 
 var onOrOff = true;
 var $favoriteMenu = document.querySelector('.favorite-menu');
-var $hamburger = document.querySelector('hamburger');
-$hamburger.addEventListener('click', favoriteHandler);
-function favoriteHandler(event) {
+var $hamburger = document.querySelector('.hamburger');
+$hamburger.addEventListener('click', favoriteMenuHandler);
+function favoriteMenuHandler(event) {
   if (onOrOff === true) {
     $favoriteMenu.className = 'favorite-menu';
     onOrOff = false;
   } else if (onOrOff === false) {
     $favoriteMenu.className = 'favorite-menu hidden';
     onOrOff = true;
+  }
+}
+
+var $favorite = document.querySelector('.favorite');
+$favorite.addEventListener('click', favoriteHandler);
+function favoriteHandler(event) {
+  if (event.target.matches('.favorite')) {
+    var $main = document.querySelector('main');
+    $main.className = 'hidden';
+    $favoritePage.className = 'favorite-page';
+    $favoriteMenu.className = 'favorite-menu hidden';
+    renderFavorite();
+  }
+}
+var $favoritePage = document.querySelector('.favorite-page');
+
+function renderFavorite(favorite) {
+  var $h2 = document.createElement('h2');
+  var $ul = document.createElement('ul');
+  $h2.setAttribute('class', 'favorite-design');
+  $ul.setAttribute('class', 'padding-initial font-family');
+  $favoritePage.appendChild($h2);
+  $favoritePage.appendChild($ul);
+  if (favoriteDadJokeArray.length === 0) {
+    $h2.textContent = 'Please favorite a joke';
+    $h2.className = 'no-joke';
+    $ul.className = 'hidden';
+  } else {
+    $h2.textContent = 'Favorites';
+    for (var i = 0; i < favoriteDadJokeArray.length; i++) {
+      var $li = document.createElement('li');
+      $li.setAttribute('class', 'favorite-joke-design');
+      $li.textContent = favoriteDadJokeArray[i];
+      $ul.appendChild($li);
+    }
   }
 }
