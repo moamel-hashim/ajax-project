@@ -176,4 +176,9 @@ p {
   font-family: 'Nunito', sans-serif;
   font-weight: 300;
   padding: 2rem 0 2rem 0;
+  text-align: center;
+}
+
+.title-design {
+  cursor: pointer;
 }

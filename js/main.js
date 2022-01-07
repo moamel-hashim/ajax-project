@@ -82,25 +82,25 @@ function smilingEmojiEventHandler(event) {
   }
 }
 
-var onOrOff = true;
+var homePage = true;
 var $favoriteMenu = document.querySelector('.favorite-menu');
 var $hamburger = document.querySelector('.hamburger');
 $hamburger.addEventListener('click', favoriteMenuHandler);
 function favoriteMenuHandler(event) {
-  if (onOrOff === true) {
+  if (homePage === true) {
     $favoriteMenu.className = 'favorite-menu';
-    onOrOff = false;
-  } else if (onOrOff === false) {
+    homePage = false;
+  } else if (homePage === false) {
     $favoriteMenu.className = 'favorite-menu hidden';
-    onOrOff = true;
+    homePage = true;
   }
 }
 
 var $favorite = document.querySelector('.favorite');
+var $main = document.querySelector('main');
 $favorite.addEventListener('click', favoriteHandler);
 function favoriteHandler(event) {
   if (event.target.matches('.favorite')) {
-    var $main = document.querySelector('main');
     $main.className = 'hidden';
     $favoritePage.className = 'favorite-page';
     $favoriteMenu.className = 'favorite-menu hidden';
@@ -110,18 +110,22 @@ function favoriteHandler(event) {
 var $favoritePage = document.querySelector('.favorite-page');
 
 function renderFavorite(favorite) {
-  var $h2 = document.createElement('h2');
-  var $ul = document.createElement('ul');
-  $h2.setAttribute('class', 'favorite-design');
-  $ul.setAttribute('class', 'padding-initial font-family');
-  $favoritePage.appendChild($h2);
-  $favoritePage.appendChild($ul);
   if (favoriteDadJokeArray.length === 0) {
+    var $h2 = document.createElement('h2');
+    $favoritePage.appendChild($h2);
+    $h2.setAttribute('class', 'no-joke');
     $h2.textContent = 'Please favorite a joke';
-    $h2.className = 'no-joke';
-    $ul.className = 'hidden';
   } else {
-    $h2.textContent = 'Favorites';
+    var $h2Checker = document.querySelector('.favorite-design');
+    if (!$h2Checker) {
+      var $secondH2 = document.createElement('h2');
+      $secondH2.setAttribute('class', 'favorite-design');
+      $secondH2.textContent = 'Favorites';
+      $favoritePage.appendChild($secondH2);
+    }
+    var $ul = document.createElement('ul');
+    $favoritePage.appendChild($ul);
+    $ul.setAttribute('class', 'padding-initial font-family');
     for (var i = 0; i < favoriteDadJokeArray.length; i++) {
       var $li = document.createElement('li');
       $li.setAttribute('class', 'favorite-joke-design');
@@ -129,4 +133,27 @@ function renderFavorite(favorite) {
       $ul.appendChild($li);
     }
   }
+}
+
+var $title = document.querySelector('.title-design');
+$title.addEventListener('click', titlePageHandler);
+
+function titlePageHandler(event) {
+  if (event.target.matches('.title-design')) {
+    $main.className = 'view';
+    $favoritePage.className = 'favorite-page hidden';
+    var $removeUl = document.querySelector('ul');
+    if ($removeUl) {
+      $removeUl.remove();
+    }
+    var $removeSecondH2 = document.querySelector('.favorite-design');
+    if ($removeSecondH2 > 0) {
+      $removeSecondH2.remove();
+    }
+    var $hideH2 = document.querySelector('.no-joke');
+    if ($hideH2) {
+      $hideH2.remove();
+    }
+  }
+  homePage = true;
 }
