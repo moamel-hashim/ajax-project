@@ -67,6 +67,14 @@
   .bars {
     margin-top: 6px;
   }
+
+  .align-center {
+    align-items: center;
+  }
+
+  .row {
+    display: flex;
+  }
 }
 
 .align-center {

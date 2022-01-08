@@ -33,12 +33,7 @@ h1 {
 }
 
 .under-line {
-  border-bottom: #eee;
-  border-style: solid;
-  border-top: 0;
-  border-right: 0;
-  border-left: 0;
-  border-width: 1px;
+  border-bottom: #eee solid 1px;
 }
 
 .justify-align-center {
@@ -157,9 +152,9 @@ p {
   color: #fff4e3;
   font-size: 24px;
   font-weight: 300;
-  border-bottom: #eee solid 1px;
   padding: 2rem 0 2rem 0;
   margin: 0;
+  width: 70%;
 }
 
 .padding-initial {
@@ -180,5 +175,16 @@ p {
 }
 
 .title-design {
+  cursor: pointer;
+}
+
+.trash-taste-container {
+  color: #a31111;
+  font-size: 35px;
+  width: 30%;
+  text-align: end;
+}
+
+.trash-taste {
   cursor: pointer;
 }

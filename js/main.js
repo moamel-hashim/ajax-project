@@ -127,10 +127,22 @@ function renderFavorite(favorite) {
     $favoritePage.appendChild($ul);
     $ul.setAttribute('class', 'padding-initial font-family');
     for (var i = 0; i < favoriteDadJokeArray.length; i++) {
+      var $div = document.createElement('div');
+      $div.setAttribute('class', 'row align-center under-line');
+      $ul.appendChild($div);
       var $li = document.createElement('li');
       $li.setAttribute('class', 'favorite-joke-design');
       $li.textContent = favoriteDadJokeArray[i];
-      $ul.appendChild($li);
+      $div.appendChild($li);
+      var $trashTasteHolder = document.createElement('div');
+      $trashTasteHolder.setAttribute('class', 'trash-taste-container');
+      $div.appendChild($trashTasteHolder);
+      var $a = document.createElement('a');
+      $a.setAttribute('class', 'trash-taste');
+      $trashTasteHolder.appendChild($a);
+      var $i = document.createElement('i');
+      $i.setAttribute('class', 'fas fa-trash-alt');
+      $a.appendChild($i);
     }
   }
 }
@@ -156,4 +168,14 @@ function titlePageHandler(event) {
     }
   }
   homePage = true;
+}
+
+var $trashTaste = document.querySelector('.trashTaste');
+
+$trashTaste.addEventListener('click', trashTasteModel);
+
+function trashTasteModel(event) {
+  if (event.target.matches('.trash-taste')) {
+    var $divModel = document.createElement('div');
+  }
 }
