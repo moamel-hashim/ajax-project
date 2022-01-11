@@ -104,12 +104,13 @@ function favoriteHandler(event) {
     $main.className = 'hidden';
     $favoritePage.className = 'favorite-page';
     $favoriteMenu.className = 'favorite-menu hidden';
+    renderCreateModule();
     renderFavorite();
   }
 }
 var $favoritePage = document.querySelector('.favorite-page');
 
-function renderFavorite(favorite) {
+function renderFavorite() {
   if (favoriteDadJokeArray.length === 0) {
     var $h2 = document.createElement('h2');
     $favoritePage.appendChild($h2);
@@ -140,6 +141,8 @@ function renderFavorite(favorite) {
       var $a = document.createElement('a');
       $a.setAttribute('class', 'trash-taste');
       $trashTasteHolder.appendChild($a);
+      var $trashTaste = document.querySelector('.trash-taste');
+      $trashTaste.addEventListener('click', trashTasteModel);
       var $i = document.createElement('i');
       $i.setAttribute('class', 'fas fa-trash-alt');
       $a.appendChild($i);
@@ -170,12 +173,44 @@ function titlePageHandler(event) {
   homePage = true;
 }
 
-var $trashTaste = document.querySelector('.trashTaste');
-
-$trashTaste.addEventListener('click', trashTasteModel);
+function renderCreateModule() {
+  var $moduleContainer = document.createElement('div');
+  $moduleContainer.setAttribute('class', 'module-container row hidden');
+  $favoritePage.appendChild($moduleContainer);
+  var $module = document.createElement('div');
+  $module.setAttribute('class', 'module');
+  $moduleContainer.appendChild($module);
+  var $insideModule = document.createElement('div');
+  $insideModule.setAttribute('class', 'inside-module');
+  $module.appendChild($insideModule);
+  var $p = document.createElement('p');
+  $p.textContent = 'Are you sure you want to delete this joke?';
+  $insideModule.appendChild($p);
+  var $buttonContainer = document.createElement('div');
+  $buttonContainer.setAttribute('class', 'button-container row justify-content-space-around');
+  $insideModule.appendChild($buttonContainer);
+  var $cancel = document.createElement('button');
+  $cancel.textContent = 'cancel';
+  $cancel.setAttribute('class', 'cancel');
+  $buttonContainer.appendChild($cancel);
+  var $cancelButton = document.querySelector('.cancel');
+  $cancelButton.addEventListener('click', cancelHandler);
+  var $confirm = document.createElement('button');
+  $confirm.textContent = 'confirm';
+  $confirm.setAttribute('class', 'confirm');
+  $buttonContainer.appendChild($confirm);
+}
 
 function trashTasteModel(event) {
-  if (event.target.matches('.trash-taste')) {
-    var $divModel = document.createElement('div');
+  var $showModule = document.querySelector('.module-container');
+  if ($showModule) {
+    $showModule.setAttribute('class', 'module-container row view');
+  }
+}
+
+function cancelHandler(event) {
+  var $hideModule = document.querySelector('.module-container');
+  if (event.target.matches('.cancel')) {
+    $hideModule.className = 'module-container row hidden';
   }
 }
