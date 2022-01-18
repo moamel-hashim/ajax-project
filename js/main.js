@@ -38,7 +38,7 @@ function rightArrowEventHandler(event) {
     xhr.responseType = 'json';
     xhr.setRequestHeader('Accept', 'application/json');
     xhr.addEventListener('load', function () {
-      var $p = document.querySelector('p');
+      var $p = document.querySelector('.joke');
       $p.textContent = xhr.response.joke;
       dadJokesArray.push(xhr.response.joke);
     });
@@ -109,7 +109,7 @@ function favoriteHandler(event) {
   }
 }
 var $favoritePage = document.querySelector('.favorite-page');
-
+var entryId = 0;
 function renderFavorite() {
   if (favoriteDadJokeArray.length === 0) {
     var $h2 = document.createElement('h2');
@@ -129,10 +129,11 @@ function renderFavorite() {
     $ul.setAttribute('class', 'padding-initial font-family');
     for (var i = 0; i < favoriteDadJokeArray.length; i++) {
       var $div = document.createElement('div');
-      $div.setAttribute('class', 'row align-center under-line');
+      $div.setAttribute('class', 'row align-center under-line remove');
       $ul.appendChild($div);
       var $li = document.createElement('li');
       $li.setAttribute('class', 'favorite-joke-design');
+      $li.setAttribute('id', entryId);
       $li.textContent = favoriteDadJokeArray[i];
       $div.appendChild($li);
       var $trashTasteHolder = document.createElement('div');
@@ -141,11 +142,15 @@ function renderFavorite() {
       var $a = document.createElement('a');
       $a.setAttribute('class', 'trash-taste');
       $trashTasteHolder.appendChild($a);
-      var $trashTaste = document.querySelector('.trash-taste');
-      $trashTaste.addEventListener('click', trashTasteModel);
       var $i = document.createElement('i');
       $i.setAttribute('class', 'fas fa-trash-alt');
       $a.appendChild($i);
+      entryId++;
+    }
+    var $trashTaste = document.querySelectorAll('.trash-taste');
+    for (var j = 0; j < $trashTaste.length; j++) {
+      $trashTaste[j].setAttribute('id', j);
+      $trashTaste[j].addEventListener('click', trashTasteModel);
     }
   }
 }
@@ -170,6 +175,7 @@ function titlePageHandler(event) {
       $hideH2.remove();
     }
   }
+  entryId = 0;
   homePage = true;
 }
 
@@ -199,18 +205,30 @@ function renderCreateModule() {
   $confirm.textContent = 'confirm';
   $confirm.setAttribute('class', 'confirm');
   $buttonContainer.appendChild($confirm);
+  var $confirmButton = document.querySelector('.confirm');
+  $confirmButton.addEventListener('click', confirmButtonHandler);
 }
 
 function trashTasteModel(event) {
+  removeId = parseInt(event.target.parentNode.id);
   var $showModule = document.querySelector('.module-container');
-  if ($showModule) {
-    $showModule.setAttribute('class', 'module-container row view');
-  }
+  $showModule.setAttribute('class', 'module-container row');
 }
 
 function cancelHandler(event) {
   var $hideModule = document.querySelector('.module-container');
   if (event.target.matches('.cancel')) {
     $hideModule.className = 'module-container row hidden';
+  }
+}
+var removeId = null;
+function confirmButtonHandler(event) {
+  if (event.target.matches('.confirm')) {
+    var removeDiv = document.getElementById(removeId);
+    removeDiv.parentNode.remove();
+    var $afterDelete = document.querySelector('.module-container');
+    $afterDelete.className = 'module-container row hidden';
+    var removeDivTextContent = removeDiv.textContent;
+    favoriteDadJokeArray.splice(favoriteDadJokeArray.indexOf(removeDivTextContent), 1);
   }
 }
