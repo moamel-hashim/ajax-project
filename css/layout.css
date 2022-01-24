@@ -75,6 +75,40 @@
   .row {
     display: flex;
   }
+
+  .modal {
+    width: 22%;
+    height: 22vh;
+    background-color: #7c7461;
+    z-index: 999;
+    border-radius: 5px;
+    box-shadow: 0 1px 10px black;
+  }
+
+  .inside-modal {
+    width: 100%;
+    padding: 0 1.5rem;
+    line-height: 1.5rem;
+  }
+
+  .cancel {
+    padding: 8px;
+    background-color: #a31111;
+    border-radius: 5px;
+    border-style: none;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .confirm {
+    border-radius: 5px;
+    border-style: none;
+    background-color: #249c30;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
 }
 
 .align-center {
@@ -82,6 +116,40 @@
 }
 
 @media screen and (max-width: 667px) {
+  .modal {
+    width: 60%;
+    height: 22vh;
+    background-color: #7c7461;
+    z-index: 999;
+    border-radius: 5px;
+    box-shadow: 0 1px 10px black;
+  }
+
+  .inside-modal {
+    width: 100%;
+    padding: 0 1.5rem;
+    line-height: 1.5rem;
+  }
+
+  .cancel {
+    padding: 8px;
+    background-color: #a31111;
+    border-radius: 5px;
+    border-style: none;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .confirm {
+    border-radius: 5px;
+    border-style: none;
+    background-color: #249c30;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
   .hamburger-menu {
     width: 20%;
     height: 7vh;

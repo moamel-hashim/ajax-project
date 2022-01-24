@@ -38,7 +38,7 @@ function rightArrowEventHandler(event) {
     xhr.responseType = 'json';
     xhr.setRequestHeader('Accept', 'application/json');
     xhr.addEventListener('load', function () {
-      var $p = document.querySelector('p');
+      var $p = document.querySelector('.joke');
       $p.textContent = xhr.response.joke;
       dadJokesArray.push(xhr.response.joke);
     });
@@ -104,12 +104,13 @@ function favoriteHandler(event) {
     $main.className = 'hidden';
     $favoritePage.className = 'favorite-page';
     $favoriteMenu.className = 'favorite-menu hidden';
+    renderCreateModal();
     renderFavorite();
   }
 }
 var $favoritePage = document.querySelector('.favorite-page');
-
-function renderFavorite(favorite) {
+var entryId = 0;
+function renderFavorite() {
   if (favoriteDadJokeArray.length === 0) {
     var $h2 = document.createElement('h2');
     $favoritePage.appendChild($h2);
@@ -128,10 +129,11 @@ function renderFavorite(favorite) {
     $ul.setAttribute('class', 'padding-initial font-family');
     for (var i = 0; i < favoriteDadJokeArray.length; i++) {
       var $div = document.createElement('div');
-      $div.setAttribute('class', 'row align-center under-line');
+      $div.setAttribute('class', 'row align-center under-line remove');
       $ul.appendChild($div);
       var $li = document.createElement('li');
       $li.setAttribute('class', 'favorite-joke-design');
+      $li.setAttribute('id', entryId);
       $li.textContent = favoriteDadJokeArray[i];
       $div.appendChild($li);
       var $trashTasteHolder = document.createElement('div');
@@ -143,6 +145,12 @@ function renderFavorite(favorite) {
       var $i = document.createElement('i');
       $i.setAttribute('class', 'fas fa-trash-alt');
       $a.appendChild($i);
+      entryId++;
+    }
+    var $trashTaste = document.querySelectorAll('.trash-taste');
+    for (var j = 0; j < $trashTaste.length; j++) {
+      $trashTaste[j].setAttribute('id', j);
+      $trashTaste[j].addEventListener('click', trashTasteModel);
     }
   }
 }
@@ -167,15 +175,60 @@ function titlePageHandler(event) {
       $hideH2.remove();
     }
   }
+  entryId = 0;
   homePage = true;
 }
 
-var $trashTaste = document.querySelector('.trashTaste');
-
-$trashTaste.addEventListener('click', trashTasteModel);
+function renderCreateModal() {
+  var $modalContainer = document.createElement('div');
+  $modalContainer.setAttribute('class', 'modal-container row hidden');
+  $favoritePage.appendChild($modalContainer);
+  var $modal = document.createElement('div');
+  $modal.setAttribute('class', 'modal');
+  $modalContainer.appendChild($modal);
+  var $insideModal = document.createElement('div');
+  $insideModal.setAttribute('class', 'inside-modal');
+  $modal.appendChild($insideModal);
+  var $p = document.createElement('p');
+  $p.textContent = 'Are you sure you want to delete this joke?';
+  $insideModal.appendChild($p);
+  var $buttonContainer = document.createElement('div');
+  $buttonContainer.setAttribute('class', 'button-container row justify-content-space-around');
+  $insideModal.appendChild($buttonContainer);
+  var $cancel = document.createElement('button');
+  $cancel.textContent = 'cancel';
+  $cancel.setAttribute('class', 'cancel');
+  $buttonContainer.appendChild($cancel);
+  var $cancelButton = document.querySelector('.cancel');
+  $cancelButton.addEventListener('click', cancelHandler);
+  var $confirm = document.createElement('button');
+  $confirm.textContent = 'confirm';
+  $confirm.setAttribute('class', 'confirm');
+  $buttonContainer.appendChild($confirm);
+  var $confirmButton = document.querySelector('.confirm');
+  $confirmButton.addEventListener('click', confirmButtonHandler);
+}
 
 function trashTasteModel(event) {
-  if (event.target.matches('.trash-taste')) {
-    var $divModel = document.createElement('div');
+  removeId = parseInt(event.target.parentNode.id);
+  var $showModal = document.querySelector('.modal-container');
+  $showModal.setAttribute('class', 'modal-container row');
+}
+
+function cancelHandler(event) {
+  var $hideModal = document.querySelector('.modal-container');
+  if (event.target.matches('.cancel')) {
+    $hideModal.className = 'modal-container row hidden';
+  }
+}
+var removeId = null;
+function confirmButtonHandler(event) {
+  if (event.target.matches('.confirm')) {
+    var removeDiv = document.getElementById(removeId);
+    removeDiv.parentNode.remove();
+    var $afterDelete = document.querySelector('.modal-container');
+    $afterDelete.className = 'modal-container row hidden';
+    var removeDivTextContent = removeDiv.textContent;
+    favoriteDadJokeArray.splice(favoriteDadJokeArray.indexOf(removeDivTextContent), 1);
   }
 }
