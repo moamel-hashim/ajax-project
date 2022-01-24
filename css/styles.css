@@ -189,7 +189,7 @@ p {
   cursor: pointer;
 }
 
-.module-container {
+.modal-container {
   position: absolute;
   width: 100%;
   height: 100vh;
@@ -197,42 +197,6 @@ p {
   align-items: center;
 }
 
-.module {
-  width: 25%;
-  height: 25vh;
-  background-color: #7c7461;
-  z-index: 999;
-  border-radius: 5px;
-  box-shadow: 0 1px 10px black;
-}
-
-.inside-module {
-  width: 100%;
-  padding: 0 4rem;
-  line-height: 1.5rem;
-  margin: 1.5rem 0 0;
-}
-
 .justify-content-space-around {
   justify-content: space-around;
-}
-
-.cancel {
-  width: 35%;
-  background-color: #a31111;
-  border-radius: 5px;
-  border-style: none;
-  color: white;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.confirm {
-  width: 35%;
-  border-radius: 5px;
-  border-style: none;
-  background-color: #249c30;
-  color: white;
-  text-transform: uppercase;
-  cursor: pointer;
 }

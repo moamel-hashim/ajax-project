@@ -104,7 +104,7 @@ function favoriteHandler(event) {
     $main.className = 'hidden';
     $favoritePage.className = 'favorite-page';
     $favoriteMenu.className = 'favorite-menu hidden';
-    renderCreateModule();
+    renderCreateModal();
     renderFavorite();
   }
 }
@@ -179,22 +179,22 @@ function titlePageHandler(event) {
   homePage = true;
 }
 
-function renderCreateModule() {
-  var $moduleContainer = document.createElement('div');
-  $moduleContainer.setAttribute('class', 'module-container row hidden');
-  $favoritePage.appendChild($moduleContainer);
-  var $module = document.createElement('div');
-  $module.setAttribute('class', 'module');
-  $moduleContainer.appendChild($module);
-  var $insideModule = document.createElement('div');
-  $insideModule.setAttribute('class', 'inside-module');
-  $module.appendChild($insideModule);
+function renderCreateModal() {
+  var $modalContainer = document.createElement('div');
+  $modalContainer.setAttribute('class', 'modal-container row hidden');
+  $favoritePage.appendChild($modalContainer);
+  var $modal = document.createElement('div');
+  $modal.setAttribute('class', 'modal');
+  $modalContainer.appendChild($modal);
+  var $insideModal = document.createElement('div');
+  $insideModal.setAttribute('class', 'inside-modal');
+  $modal.appendChild($insideModal);
   var $p = document.createElement('p');
   $p.textContent = 'Are you sure you want to delete this joke?';
-  $insideModule.appendChild($p);
+  $insideModal.appendChild($p);
   var $buttonContainer = document.createElement('div');
   $buttonContainer.setAttribute('class', 'button-container row justify-content-space-around');
-  $insideModule.appendChild($buttonContainer);
+  $insideModal.appendChild($buttonContainer);
   var $cancel = document.createElement('button');
   $cancel.textContent = 'cancel';
   $cancel.setAttribute('class', 'cancel');
@@ -211,14 +211,14 @@ function renderCreateModule() {
 
 function trashTasteModel(event) {
   removeId = parseInt(event.target.parentNode.id);
-  var $showModule = document.querySelector('.module-container');
-  $showModule.setAttribute('class', 'module-container row');
+  var $showModal = document.querySelector('.modal-container');
+  $showModal.setAttribute('class', 'modal-container row');
 }
 
 function cancelHandler(event) {
-  var $hideModule = document.querySelector('.module-container');
+  var $hideModal = document.querySelector('.modal-container');
   if (event.target.matches('.cancel')) {
-    $hideModule.className = 'module-container row hidden';
+    $hideModal.className = 'modal-container row hidden';
   }
 }
 var removeId = null;
@@ -226,8 +226,8 @@ function confirmButtonHandler(event) {
   if (event.target.matches('.confirm')) {
     var removeDiv = document.getElementById(removeId);
     removeDiv.parentNode.remove();
-    var $afterDelete = document.querySelector('.module-container');
-    $afterDelete.className = 'module-container row hidden';
+    var $afterDelete = document.querySelector('.modal-container');
+    $afterDelete.className = 'modal-container row hidden';
     var removeDivTextContent = removeDiv.textContent;
     favoriteDadJokeArray.splice(favoriteDadJokeArray.indexOf(removeDivTextContent), 1);
   }
